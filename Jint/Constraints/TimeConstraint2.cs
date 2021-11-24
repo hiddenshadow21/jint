@@ -4,12 +4,19 @@ using System.Threading;
 
 namespace Jint.Constraints
 {
-    internal sealed class TimeConstraint2 : IConstraint
+    public sealed class TimeConstraint2 : IConstraint
     {
-        private readonly TimeSpan _timeout;
+        public TimeSpan Timeout => _timeout;
+
+        private TimeSpan _timeout;
         private CancellationTokenSource cts;
 
         public TimeConstraint2(TimeSpan timeout)
+        {
+            Change(timeout);
+        }
+
+        public void Change(TimeSpan timeout)
         {
             _timeout = timeout;
         }

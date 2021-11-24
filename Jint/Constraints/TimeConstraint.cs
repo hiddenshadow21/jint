@@ -3,12 +3,19 @@ using System;
 
 namespace Jint.Constraints
 {
-    internal sealed class TimeConstraint : IConstraint
+    public sealed class TimeConstraint : IConstraint
     {
-        private readonly long _maxTicks;
+        public long MaxTicks => _maxTicks;
+
+        private long _maxTicks;
         private long _timeoutTicks;
 
         public TimeConstraint(TimeSpan timeout)
+        {
+            Change(timeout);
+        }
+
+        public void Change(TimeSpan timeout)
         {
             _maxTicks = timeout.Ticks;
         }
